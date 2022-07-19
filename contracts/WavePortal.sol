@@ -22,8 +22,8 @@ contract WavePortal {
     // declare the variable waves that allows for setting up an array of waves.
     Wave [] waves;  //FYI,  mappings are cheaper than arrays in gas if you can avoid them.
     
-    constructor() {
-        console.log("A constructor has been initialised, this is an OPTIONAL special function that initialises the state variables of a contract.");
+    constructor() payable {
+        console.log("A constructor has been initialised, and hopefully funded.");
     }
 
     function wave(string memory _message) public {
@@ -36,6 +36,13 @@ contract WavePortal {
 
         ///@notice send a notification that the message has been stored.
         emit NewWave(msg.sender, block.timestamp, _message);
+
+        //check that the contract has enough money to payout, then payout to the contract caller.
+        uint256 prizeAmount = 0.0001 ether;
+        require(prizeAmount <= address(this).balance, "The contract does not have enough ballance, Sorry!");
+        (bool success, ) = (msg.sender).call{ value: prizeAmount}(""); // this does not feel right.
+        require(success, "Failed to withdraw fromn contract");
+
     }
 
     /// @notice get all the waves stored in the said array.

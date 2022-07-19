@@ -10,7 +10,7 @@ const main  = async () => {
     await waveContract.deployed();
 
     console.log("WavePortal Contract Address:", waveContract.address);
-    //deployed address placeholder: 0xB9734c58f27De708a76E69Ed06ceE9D73Bef28bf
+    //deployed address placeholder: 0x398F11Ea3936Deca3dab4ff47f4d1926aA8A28e0  0x67706eDB010932D16069e9eE9177da670c8DCF8B
 
 };
 
