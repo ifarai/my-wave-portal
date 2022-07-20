@@ -22,8 +22,11 @@ const main  = async () => {
     let waveCount;
     waveCount = await waveContract.getTotalWaves();
 
-    let waveTxn = await waveContract.wave("A friendly message from meatspace");
+    let waveTxn = await waveContract.wave("A friendly message from meatspace #1");
     await waveTxn.wait();
+
+    // let waveTxn2 = await waveContract.wave("A friendly message from meatspace mc meaaty #2");
+    // await waveTxn2.wait();
 
     waveCount = await waveContract.getTotalWaves();
 

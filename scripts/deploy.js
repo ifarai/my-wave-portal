@@ -6,11 +6,14 @@ const main  = async () => {
     console.log("Account Balance: ", accountBalance.toString());
 
     const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
-    const waveContract = await waveContractFactory.deploy();
+    const waveContract = await waveContractFactory.deploy({
+        value : hre.ethers.utils.parseEther("0.1"),
+    });
     await waveContract.deployed();
 
     console.log("WavePortal Contract Address:", waveContract.address);
-    //deployed address placeholder: 0x398F11Ea3936Deca3dab4ff47f4d1926aA8A28e0  0x67706eDB010932D16069e9eE9177da670c8DCF8B
+    //deployed address placeholder: 0x2502ddfca4BfA9c84BC122b4B8D275f5d2238A98
+    // 30 sec : 0xA67Ba59788E2D8d341b52AA479f563BC6C17c9Dd
 
 };
 
